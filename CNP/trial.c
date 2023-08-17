@@ -14,8 +14,12 @@ else return a*powerr(a,x-1);
 }
 
 void main(){
-    int i=8,j=100;
-    // int remm=rem(j,i);
-    int p=powerr(2,5);
-    printf("\n%d\n",p);
+    char i[26]="^A^B";
+    for (j=0;j<s)
+
+//     for( int j=0;j<26;j++){
+//         printf("%d\n",scanf("%c",&i));
+//     }
+// 
+
 }

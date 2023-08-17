@@ -13,7 +13,7 @@ int main()
           scanf("%c",&ch);
           if(ch==DLE || ch==STX || ch==ETX)
            array[i++]=DLE;
-           array[i++]=ch;
+          array[i++]=ch;
           
         }while(ch!='\n');
     array[i++]=DLE;
