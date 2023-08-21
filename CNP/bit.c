@@ -9,7 +9,7 @@ int main()
    do {  scanf("%c",&ch);
          if(ch=='1')
             count=count+1;
-         else 
+         else
             count=0;
          array[i++]=ch;
          if(count==5)
