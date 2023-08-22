@@ -11,9 +11,9 @@ int i,j,cnt,c;
 
 for(i=0;i<len;i++){
     cnt=0;
-for(j=0;j<len;j++)
-    if(wrd[i]>wrd[j]) ++cnt;
-        seq[i]=cnt;
+    for(j=0;j<len;j++)
+        if(wrd[i]>wrd[j]) ++cnt;
+    seq[i]=cnt;
 }
 printf("\nEnter data :");
 cnt=strlen(gets(data));
@@ -29,7 +29,7 @@ else {
 
     for(j=0;j<len;j++){
         if(cipher[cnt/len-1][j]=='.')
-    cipher[cnt/len][i%len]=' ';
+            cipher[cnt/len][i%len]=' ';
     }
 
     printf("Decrypted data:");
