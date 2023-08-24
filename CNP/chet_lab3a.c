@@ -40,7 +40,7 @@ void sort(){
 
 void main(){
     int i,total,j,k,m,n,esel=0,nl,nr;
-    printf("\nEnter the number of modes:");
+    printf("\nEnter the number of nodes:");
     scanf("%d",&total);
     for(i=0;i<total;i++) getdata(i,total);
     init(total);
