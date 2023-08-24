@@ -47,7 +47,7 @@ void main(){
     sort();
     printf("\nThe Sorted order of edges:");
     for(i=0;i<ec;i++)
-        printf("\nedge: %d first node: %c second node: %c d: %d",i,e[i].n1+65,e[i].n2+65,e[i].d);
+        printf("\nedge: %d, first node: %c, second node: %c, distance: %d",i,e[i].n1+65,e[i].n2+65,e[i].d);
     i=0;
     do{
         e[i].sel=1;
@@ -69,5 +69,5 @@ void main(){
     printf("\nMinimum Spanning Tree is:");
     for(i=0;i<ec;++i)
         if(e[i].sel==1)
-            printf("\n%c<------->%c d %d",e[i].n1+65,e[i].n2+65,e[i].d);
+            printf("\n%c<------->%c distance %d",e[i].n1+65,e[i].n2+65,e[i].d);
 }
