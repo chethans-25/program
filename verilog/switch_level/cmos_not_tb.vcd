@@ -1,0 +1,55 @@
+$date
+	Wed Aug 23 10:26:03 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module cmos_not_tb $end
+$var wire 1 ! out $end
+$var reg 1 " in $end
+$scope module not1 $end
+$var wire 1 # gnd $end
+$var wire 1 $ in $end
+$var wire 1 ! out $end
+$var wire 1 % vcc $end
+$var wire 1 & vdd $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+1&
+z%
+0$
+0#
+0"
+z!
+$end
+#1
+1"
+0!
+1$
+#2
+0"
+z!
+0$
+#3
+1"
+0!
+1$
+#4
+0"
+z!
+0$
+#5
+1"
+0!
+1$
+#6
+0"
+z!
+0$
+#7

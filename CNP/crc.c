@@ -5,25 +5,24 @@ char data[30];
 char check_value[30];
 char gen_poly[30];
 int data_length,i,j;
-void crc_1();
+void crc();
 void XOR(){
     for(j = 1;j < N; j++)
     check_value[j] = (( check_value[j] == gen_poly[j])?'0':'1');
-   
 }
 void receiver(){
     printf("\nEnter the received data: ");
     scanf("%s", data);
     printf("Data received: %s", data);
-    crc_1();
+    crc();
     for(i=0;(i<N-1) && (check_value[i]!='1');i++);
-        if(i<N-1)
-            printf("\nError detected\n\n");
-        else
-            printf("\nNo error detected\n\n");
+    if(i<N-1)
+        printf("\nError detected\n\n");
+    else
+        printf("\nNo error detected\n\n");
 }
 
-void crc_1(){
+void crc(){
     for(i=0;i<N;i++)
         check_value[i]=data[i];
     do{
@@ -45,7 +44,7 @@ int main()
     for(i=data_length;i<data_length+N-1;i++)
         data[i]='0';
     printf("\n Data padded with %d zeros : %s",N-1,data);
-    crc_1();
+    crc();
     printf("\nCRC or Check value is : %s",check_value);
     for(i=data_length;i<data_length+N-1;i++)
         data[i]=check_value[i-data_length];
@@ -64,7 +63,7 @@ char check_value[30];
 // char gen_poly[]={1,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,1};
 char gen_poly[30];
 int data_length,i,j;
-void crc_1();
+void crc();
 void XOR(){
     for(j = 1;j < N; j++)
     check_value[j] = (( check_value[j] == gen_poly[j])?'0':'1');
@@ -74,7 +73,7 @@ void receiver(){
     printf("\nEnter the received data: ");
     scanf("%s", data);
     printf("Data received: %s", data);
-    crc_1();
+    crc();
     for(i=0;(i<N-1) && (check_value[i]!='1');i++);
         if(i<N-1)
             printf("\nError detected\n\n");
@@ -82,7 +81,7 @@ void receiver(){
             printf("\nNo error detected\n\n");
 }
 
-void crc_1(){
+void crc(){
     for(i=0;i<N;i++)
         check_value[i]=data[i];
     do{
@@ -104,7 +103,7 @@ int main()
     for(i=data_length;i<data_length+N-1;i++)
         data[i]='0';
     printf("\n Data padded with n-1 zeros : %s",data);
-    crc_1();
+    crc();
     printf("\nCRC or Check value is : %s",check_value);
     for(i=data_length;i<data_length+N-1;i++)
         data[i]=check_value[i-data_length];
