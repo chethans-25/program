@@ -7,7 +7,7 @@ char wrd[]="MEGABUCK";
 int len=strlen(wrd);
 char cipher[20][len];
 int seq[len];
-int i,j,cnt,c;
+int i,j,cnt,k;
 
 for(i=0;i<len;i++){
     cnt=0;
@@ -21,10 +21,10 @@ if (cnt%len!=0)
     printf("\nError: Invalid Input");
 else {
     for(i=0;i<len;i++){
-        for(c=0;c<len;c++)
-            if(seq[c]==i) break;
-        for(j=0;j<cnt/len;j++)
-            cipher[j][c]=data[i*(cnt/len)+j];
+        for(j=0;j<len;j++)
+            if(seq[j]==i) break;
+        for(k=0;k<cnt/len;k++)
+            cipher[k][j]=data[i*(cnt/len)+k];
     }
 
     for(j=0;j<len;j++){
