@@ -1,0 +1,47 @@
+$date
+	Sat Sep 02 07:58:43 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module mux21tb $end
+$var wire 1 ! y $end
+$var reg 1 " a $end
+$var reg 1 # b $end
+$var reg 1 $ sel $end
+$scope module m1 $end
+$var wire 1 % a $end
+$var wire 1 & b $end
+$var wire 1 ' sel $end
+$var wire 1 ( w1 $end
+$var wire 1 ) w2 $end
+$var wire 1 * w3 $end
+$var wire 1 ! y $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0*
+1)
+0(
+1'
+0&
+1%
+1$
+0#
+1"
+1!
+$end
+#5
+1(
+0$
+0'
+#15
+0(
+1$
+1'
+#20

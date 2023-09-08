@@ -1,0 +1,24 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_01103340 .scope module, "mux21" "mux21" 2 1;
+ .timescale 0 0;
+L_0110EFA0 .functor OR 1, C4<z>, L_01105278, C4<0>, C4<0>;
+L_011033C8 .functor AND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+L_011051D0 .functor OR 1, L_0110EFA0, L_011033C8, C4<0>, C4<0>;
+L_01105278 .functor NOT 1, C4<z>, C4<0>, C4<0>, C4<0>;
+v01104908_0 .net "a", 0 0, C4<z>; 0 drivers
+v0110EE40_0 .net "b", 0 0, C4<z>; 0 drivers
+v0110EE98_0 .net "sel", 0 0, C4<z>; 0 drivers
+v0110EEF0_0 .net "w1", 0 0, L_01105278; 1 drivers
+v0110EF48_0 .net "w2", 0 0, L_0110EFA0; 1 drivers
+v01105120_0 .net "w3", 0 0, L_011033C8; 1 drivers
+v01105178_0 .net "y", 0 0, L_011051D0; 1 drivers
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "mux21.v";

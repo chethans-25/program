@@ -1,0 +1,25 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_010E3378 .scope module, "hello" "hello" 2 1;
+ .timescale 0 0;
+v010E3400_0 .var "i", 10 0;
+    .scope S_010E3378;
+T_0 ;
+    %mov 8, 3, 4;
+    %movi 12, 1, 7;
+    %set/v v010E3400_0, 8, 11;
+    %vpi_call 2 6 "$display", "Hello worldd";
+    %load/v 8, v010E3400_0, 11;
+    %xor/r 8, 8, 11;
+    %vpi_call 2 7 "$display", "i=%b", T<8,1,u>;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "hello.v";

@@ -1,0 +1,49 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_01163378 .scope module, "mul2tb" "mul2tb" 2 3;
+ .timescale 0 0;
+v0116E6C8_0 .var "a", 0 0;
+v0116E720_0 .net "y", 0 0, L_0116ED08; 1 drivers
+E_01168178 .event edge, v0116E618_0;
+S_01163400 .scope module, "m2" "mul2" 2 6, 3 1, S_01163378;
+ .timescale 0 0;
+v01163710_0 .net *"_s0", 31 0, C4<00000000000000000000000000000010>; 1 drivers
+v01163768_0 .net *"_s2", 31 0, L_0116E778; 1 drivers
+v011637C0_0 .net *"_s5", 30 0, C4<0000000000000000000000000000000>; 1 drivers
+v01163818_0 .net *"_s6", 31 0, L_0116E838; 1 drivers
+v0116E618_0 .net "a", 0 0, v0116E6C8_0; 1 drivers
+v0116E670_0 .alias "y", 0 0, v0116E720_0;
+L_0116E778 .concat [ 1 31 0 0], v0116E6C8_0, C4<0000000000000000000000000000000>;
+L_0116E838 .arith/sum 32, C4<00000000000000000000000000000010>, L_0116E778;
+L_0116ED08 .part L_0116E838, 0, 1;
+    .scope S_01163378;
+T_0 ;
+    %vpi_call 2 9 "$dumpfile", "mul2tb.vcd";
+    %vpi_call 2 10 "$dumpvars", 1'sb0;
+    %end;
+    .thread T_0;
+    .scope S_01163378;
+T_1 ;
+    %set/v v0116E6C8_0, 0, 1;
+    %end;
+    .thread T_1;
+    .scope S_01163378;
+T_2 ;
+    %wait E_01168178;
+    %vpi_call 2 15 "$display";
+    %delay 5, 0;
+    %set/v v0116E6C8_0, 0, 1;
+    %delay 5, 0;
+    %vpi_call 2 17 "$finish";
+    %jmp T_2;
+    .thread T_2, $push;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "mul2tb.v";
+    "./mul2.v";
