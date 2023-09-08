@@ -12,13 +12,16 @@ int prime(int cost[10][10],int source,int n){
     }//end of for i
     visited[source]=1;
     for(i=1;i<=n-1;i++){
+        printf("\ni=%d",i);
         min=infinity;
         for(j=1;j<=n;j++)
             if(!visited[j] && cmp[j]<min){
                 min=cmp[j];
                 u=j;
             }//end of if
+        
         visited[u]=1;
+        // printf("\n");
         sum=sum+cmp[u];
         printf("\n%d-> %d sum=%d",vertex[u],u,cmp[u]);
         for(v=1;v<=n;v++)

@@ -24,8 +24,7 @@ int data[4][4]={0, 1000, 0, -1000, //phase=0 & symbol=00
 1000, 0, -1000, 0, //phase=90 & symbol=01
 0,-1000, 0, 1000, //phase=270 & symbol=10
 -1000, 0, 1000,0}; //phase=180 & symbol=11
-interrupt void c_int11() //interrupt
-service routine
+interrupt void c_int11() //interrupt service routine
 {
 int sample_data;
 switch(mode)
@@ -68,17 +67,17 @@ temp[j_D]=output; //temp holds modulated value
 bit=0; //initializes bit to its default value
 //demodulation starts
 if (temp[0]==0)
-{
-if (temp[1]==-1000)
-bit=3;
-} //checks first 2 values and determines corresponding bit
+    {
+    if (temp[1]==-1000)
+        bit=2;
+    } //checks first 2 values and determines corresponding bit
 else
-{
-if (temp[0]==1000)
-bit=1;
-else
-bit=2;
-}
+    {
+    if (temp[0]==1000)
+        bit=1;
+    else
+        bit=3;
+    }
 bit = bit << 14; // aligns determined bit to right location
 buffer = buffer + bit;
 if (i_D!=7)

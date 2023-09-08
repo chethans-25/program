@@ -2,24 +2,19 @@
 #include <stdlib.h>
 #include <math.h>
 
-
-
 // Function to generate public and private keys
 void generate_keys(int p, int q, int *e, int *d, int *n) {
     // Calculate n (modulus)
     *n = p * q;
-
     // Calculate Euler's totient function (phi)
     int phi = (p - 1) * (q - 1);
-
     // Choose public exponent (e) - Common value: 65537
     *e = 65537;
-    
     // Calculate private exponent (d)
     int i;
-    for(i=3;i<phi;i++)
-    {  if( (i**e)%phi == 1)
-         break;
+    for(i=3;i<phi;i++){
+        if( (i**e)%phi == 1)
+        break;
     }
     *d = i;
 }
@@ -27,22 +22,18 @@ void generate_keys(int p, int q, int *e, int *d, int *n) {
 // Function to perform RSA encryption
 int rsa_encrypt(int plaintext, int e, int n) {
     int ciphertext = 1;
-
     for (int i = 0; i < e; i++) {
         ciphertext = (ciphertext * plaintext) % n;
     }
-
     return ciphertext;
 }
 
 // Function to perform RSA decryption
 int rsa_decrypt(int ciphertext, int d, int n) {
     int plaintext = 1;
-
     for (int i = 0; i < d; i++) {
         plaintext = (plaintext * ciphertext) % n;
     }
-
     return plaintext;
 }
 
@@ -51,16 +42,13 @@ int main() {
     int e, d, n;
     char plaintext[100];
     int ciphertext[100], decrypted_text[100];
-
     printf("Enter the plaintext (a string of characters): ");
+    // gets(plaintext);
     scanf("%[^\n]", plaintext);
-
     // Generate the keys
     generate_keys(p, q, &e, &d, &n);
-
     printf("Public key (e, n): (%d, %d)\n", e, n);
     printf("Private key (d, n): (%d, %d)\n", d, n);
-
     // Encrypt the string character by character
     for (int i = 0; plaintext[i] != '\0'; i++) {
         if (plaintext[i] == ' ') {

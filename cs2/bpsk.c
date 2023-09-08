@@ -21,8 +21,7 @@ short mode=1;
 //Data table for PSK MOD & DEMOD:
 int data[2][4]={0, 1000, 0, -1000, //0 degree
 0, -1000, 0, 1000}; //180 degree
-interrupt void c_int11() //interrupt
-service routine
+interrupt void c_int11() //interrupt service routine
 {
 int sample_data;
 switch(mode)
