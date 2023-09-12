@@ -13,30 +13,30 @@ float32_t yn, adapt_in, adapt_out, adapt_err,input,wn;
 
 void SPI2_IRQHandler()
 {	
-  int16_t left_in_sample = 0;
-  int16_t right_in_sample = 0;
-  int16_t left_out_sample = 0;
-  int16_t right_out_sample = 0;
+  int16_t lis = 0;
+  int16_t ris = 0;
+  int16_t los = 0;
+  int16_t ros = 0;
 
   if (SPI_I2S_GetFlagStatus(I2Sx, I2S_FLAG_CHSIDE) == SET) 
     {
-  	  left_in_sample = SPI_I2S_ReceiveData(I2Sx);
-	    input = (float32_t)(left_in_sample);
-		  adapt_in = (float32_t)(prbs(8000));
-      left_out_sample = (int16_t)(adapt_in);
-		  while (SPI_I2S_GetFlagStatus(I2Sxext, SPI_I2S_FLAG_TXE ) != SET){}
-		  SPI_I2S_SendData(I2Sxext, left_out_sample);			
-      GPIO_SetBits(GPIOD, GPIO_Pin_15);
-		  arm_lms_f32(&S, &adapt_in, &input, &adapt_out, &adapt_err, BLOCK_SIZE);	
-      GPIO_ResetBits(GPIOD, GPIO_Pin_15);
+  	    lis = SPI_I2S_ReceiveData(I2Sx);
+	    input = (float32_t)(lis);
+		adapt_in = (float32_t)(prbs(8000));
+        los = (int16_t)(adapt_in);
+		while (SPI_I2S_GetFlagStatus(I2Sxext, SPI_I2S_FLAG_TXE ) != SET){}
+		SPI_I2S_SendData(I2Sxext, los);			
+        GPIO_SetBits(GPIOD, GPIO_Pin_15);
+		arm_lms_f32(&S, &adapt_in, &input, &adapt_out, &adapt_err, BLOCK_SIZE);	
+        GPIO_ResetBits(GPIOD, GPIO_Pin_15);
   	}
 		else
     {
-		  right_in_sample = SPI_I2S_ReceiveData(I2Sx);
-			right_out_sample = 0;
+		  ris = SPI_I2S_ReceiveData(I2Sx);
+		  ros = 0;
 		  while (SPI_I2S_GetFlagStatus(I2Sxext, SPI_I2S_FLAG_TXE ) != SET){}
-		  SPI_I2S_SendData(I2Sxext, right_out_sample);
-	  }
+		  SPI_I2S_SendData(I2Sxext, ros);
+	}
 }
 
 int main(void)
