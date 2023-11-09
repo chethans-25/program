@@ -1,0 +1,134 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_010BCAD8 .scope module, "alu" "alu" 2 1;
+ .timescale 0 0;
+L_010B3370 .functor OR 32, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>;
+L_010F0978 .functor AND 32, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>, C4<11111111111111111111111111111111>, C4<11111111111111111111111111111111>;
+L_010F0A20 .functor NOT 32, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>;
+L_010F0F88 .functor NOT 1, L_010F0810, C4<0>, C4<0>, C4<0>;
+L_010F0CE8 .functor NOT 1, L_010F04A0, C4<0>, C4<0>, C4<0>;
+L_010F0D90 .functor AND 1, L_010F0CE8, L_010F0868, C4<1>, C4<1>;
+L_010F0E00 .functor NOT 1, L_0111BAC0, C4<0>, C4<0>, C4<0>;
+L_010F17A0 .functor XOR 1, L_0111BA68, L_0111BB18, C4<0>, C4<0>;
+L_010F1148 .functor AND 1, L_010F0E00, L_010F17A0, C4<1>, C4<1>;
+L_010F1110 .functor XOR 1, L_0111B8B0, L_0111B750, C4<0>, C4<0>;
+L_010F1180 .functor XOR 1, L_010F1110, L_0111BBC8, C4<0>, C4<0>;
+L_010F11F0 .functor NOT 1, L_010F1180, C4<0>, C4<0>, C4<0>;
+L_010F1730 .functor AND 1, L_010F1148, L_010F11F0, C4<1>, C4<1>;
+v010BD580_0 .net "A", 31 0, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; 0 drivers
+v010BD8F0_0 .net "A_and_B", 31 0, L_010F0978; 1 drivers
+v010BD4D0_0 .net "A_or_B", 31 0, L_010B3370; 1 drivers
+v010BD790_0 .net "B", 31 0, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; 0 drivers
+v010BDA50_0 .net "CARRY", 0 0, L_010F0D90; 1 drivers
+v010BD630_0 .net "NEG", 0 0, L_010F0918; 1 drivers
+v010BD528_0 .net "OVERFLOW", 0 0, L_010F1730; 1 drivers
+v010BDB00_0 .net "ZERO", 0 0, L_010F0F88; 1 drivers
+v010BDB58_0 .net *"_s15", 32 0, L_010F0600; 1 drivers
+v010BD478_0 .net *"_s18", 0 0, C4<0>; 1 drivers
+v010BD6E0_0 .net *"_s19", 32 0, L_010F06B0; 1 drivers
+v010BD7E8_0 .net *"_s22", 0 0, C4<0>; 1 drivers
+v010BD898_0 .net *"_s23", 32 0, L_010F04F8; 1 drivers
+v010BD948_0 .net *"_s26", 0 0, L_010F0760; 1 drivers
+v010EFD10_0 .net *"_s27", 32 0, L_010F0708; 1 drivers
+v010EF9A0_0 .net *"_s30", 31 0, C4<00000000000000000000000000000000>; 1 drivers
+v010EF9F8_0 .net *"_s31", 32 0, L_010F0550; 1 drivers
+v010F01E0_0 .net *"_s33", 30 0, C4<0000000000000000000000000000000>; 1 drivers
+v010F0238_0 .net *"_s36", 0 0, L_010F0658; 1 drivers
+v010F0290_0 .net *"_s37", 31 0, L_010F05A8; 1 drivers
+v010EFD68_0 .net *"_s42", 0 0, L_010F0810; 1 drivers
+v010EFF78_0 .net *"_s48", 0 0, L_010F04A0; 1 drivers
+v010F02E8_0 .net *"_s49", 0 0, L_010F0CE8; 1 drivers
+v010F0340_0 .net *"_s54", 0 0, L_0111BAC0; 1 drivers
+v010EFA50_0 .net *"_s55", 0 0, L_010F0E00; 1 drivers
+v010EFDC0_0 .net *"_s58", 0 0, L_0111BA68; 1 drivers
+v010F0028_0 .net *"_s60", 0 0, L_0111BB18; 1 drivers
+v010F0398_0 .net *"_s61", 0 0, L_010F17A0; 1 drivers
+v010F03F0_0 .net *"_s63", 0 0, L_010F1148; 1 drivers
+v010EFAA8_0 .net *"_s66", 0 0, L_0111B8B0; 1 drivers
+v010EFB00_0 .net *"_s68", 0 0, L_0111B750; 1 drivers
+v010EFB58_0 .net *"_s69", 0 0, L_010F1110; 1 drivers
+v010EFC60_0 .net *"_s72", 0 0, L_0111BBC8; 1 drivers
+v010F0448_0 .net *"_s73", 0 0, L_010F1180; 1 drivers
+v010EFFD0_0 .net *"_s75", 0 0, L_010F11F0; 1 drivers
+v010EFBB0_0 .net *"_s9", 0 0, L_010F00D8; 1 drivers
+v010EFC08_0 .net "cout", 0 0, L_010F0868; 1 drivers
+v010EFCB8_0 .net "ext", 0 0, L_010F08C0; 1 drivers
+v010EFE18_0 .net "mux1", 31 0, L_010F0130; 1 drivers
+v010EFE70_0 .var "mux2", 31 0;
+v010EFEC8_0 .net "not_B", 31 0, L_010F0A20; 1 drivers
+v010EFF20_0 .net "opcode", 2 0, C4<zzz>; 0 drivers
+v010F0080_0 .net "result", 31 0, v010EFE70_0; 1 drivers
+v010F0188_0 .net "sum", 31 0, L_010F07B8; 1 drivers
+E_010BE9F0/0 .event edge, v010EFF20_0, v010F0188_0, v010BD8F0_0, v010BD4D0_0;
+E_010BE9F0/1 .event edge, v010EFCB8_0;
+E_010BE9F0 .event/or E_010BE9F0/0, E_010BE9F0/1;
+L_010F00D8 .part C4<zzz>, 0, 1;
+L_010F0130 .functor MUXZ 32, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>, L_010F0A20, L_010F00D8, C4<>;
+L_010F0868 .part L_010F0550, 32, 1;
+L_010F07B8 .part L_010F0550, 0, 32;
+L_010F0600 .concat [ 32 1 0 0], C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>, C4<0>;
+L_010F06B0 .concat [ 32 1 0 0], L_010F0130, C4<0>;
+L_010F04F8 .arith/sum 33, L_010F0600, L_010F06B0;
+L_010F0760 .part C4<zzz>, 0, 1;
+L_010F0708 .concat [ 1 32 0 0], L_010F0760, C4<00000000000000000000000000000000>;
+L_010F0550 .arith/sum 33, L_010F04F8, L_010F0708;
+L_010F0658 .part L_010F07B8, 31, 1;
+L_010F05A8 .concat [ 1 31 0 0], L_010F0658, C4<0000000000000000000000000000000>;
+L_010F08C0 .part L_010F05A8, 0, 1;
+L_010F0810 .reduce/or v010EFE70_0;
+L_010F0918 .part v010EFE70_0, 31, 1;
+L_010F04A0 .part C4<zzz>, 1, 1;
+L_0111BAC0 .part C4<zzz>, 1, 1;
+L_0111BA68 .part C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>, 31, 1;
+L_0111BB18 .part L_010F07B8, 31, 1;
+L_0111B8B0 .part C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>, 31, 1;
+L_0111B750 .part C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>, 31, 1;
+L_0111BBC8 .part C4<zzz>, 0, 1;
+    .scope S_010BCAD8;
+T_0 ;
+    %wait E_010BE9F0;
+    %load/v 8, v010EFF20_0, 3;
+    %mov 11, 2, 1;
+    %movi 12, 0, 2;
+    %cmp/x 8, 11, 3;
+    %jmp/1 T_0.0, 4;
+    %movi 14, 2, 3;
+    %cmp/x 8, 14, 3;
+    %jmp/1 T_0.1, 4;
+    %movi 14, 3, 3;
+    %cmp/x 8, 14, 3;
+    %jmp/1 T_0.2, 4;
+    %movi 14, 4, 3;
+    %cmp/x 8, 14, 3;
+    %jmp/1 T_0.3, 4;
+    %set/v v010EFE70_0, 0, 32;
+    %jmp T_0.5;
+T_0.0 ;
+    %load/v 8, v010F0188_0, 32;
+    %set/v v010EFE70_0, 8, 32;
+    %jmp T_0.5;
+T_0.1 ;
+    %load/v 8, v010BD8F0_0, 32;
+    %set/v v010EFE70_0, 8, 32;
+    %jmp T_0.5;
+T_0.2 ;
+    %load/v 8, v010BD4D0_0, 32;
+    %set/v v010EFE70_0, 8, 32;
+    %jmp T_0.5;
+T_0.3 ;
+    %load/v 8, v010EFCB8_0, 1;
+    %mov 9, 0, 31;
+    %set/v v010EFE70_0, 8, 32;
+    %jmp T_0.5;
+T_0.5 ;
+    %jmp T_0;
+    .thread T_0, $push;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "alu.v";
