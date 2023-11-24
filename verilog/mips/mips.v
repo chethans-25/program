@@ -1,4 +1,4 @@
-module pipe_MIPS32 (clkl, clk2);
+module pipe_MIPS32 (clk1, clk2);
 input clk1, clk2;
 // Two-phase clock
 reg [31:0] PC, IF_ID_IR, IF_ID_NPC;
@@ -6,7 +6,7 @@ reg [31:0] ID_EX_IR, ID_EX_NPC, ID_EX_A, ID_EX_B, ID_EX_Imm;
 reg [2:0] ID_EX_type, EX_MEM_type, MEM_WB_type;
 reg [31:0] EX_MEM_IR, EX_MEM_ALUout, EX_MEM_B;
 reg EX_MEM_cond;
-reg [31:0] MEM_WB_IR, MEM_WB_ALUOut, MEM_WB_LMD;
+reg [31:0] MEM_WB_IR, MEM_WB_ALUout, MEM_WB_LMD;
 reg [31:0] Reg [0:31];
 reg [31:0] Mem [0:1023];
 // Register bank (32 x 32)
@@ -68,7 +68,7 @@ begin
 
 EX_MEM_type <= #2 ID_EX_type;
 EX_MEM_IR  <= #2 ID_EX_IR;
-TAKEN_BRANCH <= #2 1'b0:
+TAKEN_BRANCH <= #2 1'b0;
 case (ID_EX_type)
 RR_ALU:
 begin
@@ -87,15 +87,15 @@ RM_ALU:
 begin
 case (ID_EX_IR[31:26]) // "opcode"
 ADDI: EX_MEM_ALUout <= #2 ID_EX_A + ID_EX_Imm;
-SUBI: EX_MEM_ALUOut <= #2 ID_EX_A - ID_EX_Imm;
-SLTI: EX_MEM_ALUOut <= #2 ID_EX_A < ID_EX_Imm;
+SUBI: EX_MEM_ALUout <= #2 ID_EX_A - ID_EX_Imm;
+SLTI: EX_MEM_ALUout <= #2 ID_EX_A < ID_EX_Imm;
 default: EX_MEM_ALUout <= #2 32'hxxxxxxxx;
 endcase
 end
 
 LOAD, STORE:
 begin
-EX_MEM_ALUOut <= #2 ID_EX_A + ID_EX_Imm;
+EX_MEM_ALUout <= #2 ID_EX_A + ID_EX_Imm;
 EX_MEM_B <= #2 ID_EX_B;
 end
 BRANCH: begin
@@ -112,19 +112,19 @@ begin MEM_WB_type <= #2 EX_MEM_type;
 MEM_WB_IR <= #2 EX_MEM_IR;
 case (EX_MEM_type) RR_ALU, RM_ALU:
 MEM_WB_ALUout <= #2 EX_MEM_ALUout;
-LOAD: MEM_WB_LMD <= #2 Mem [EX_MEM_ALUOut];
+LOAD: MEM_WB_LMD <= #2 Mem [EX_MEM_ALUout];
 STORE: if (TAKEN_BRANCH == 0) // Disable write 
-    Mem [EX_MEM_ALUOut] <= #2 EX_MEM_B;
+    Mem [EX_MEM_ALUout] <= #2 EX_MEM_B;
 endcase
 end
 
 
 always @ (posedge clk1) // WB Stage
 begin
-if (TAKEN BRANCH == 0) // Disable write if branch taken
+if (TAKEN_BRANCH == 0) // Disable write if branch taken
 case (MEM_WB_type)
 RR_ALU: Reg [MEM_WB_IR[15:11]] <= #2 MEM_WB_ALUout; // "rd"
-RM_ALU: Reg [MEM_WB_IR[20:16]] <= #2 MEM_WB_ALUOut; // "rt"
+RM_ALU: Reg [MEM_WB_IR[20:16]] <= #2 MEM_WB_ALUout; // "rt"
 LOAD: Reg [MEM_WB_IR[20:16]] <= #2 MEM_WB_LMD; // "rt"
 HALT: HALTED <= #2 1'b1;
 endcase
